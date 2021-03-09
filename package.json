@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "gulp": "^4.0.2"
+    "dotenv": "^8.2.0",
+    "gulp": "^4.0.2",
+    "gulp-sftp": "^0.1.5"
   },
   "scripts": {
     "test": "gulp clean"
