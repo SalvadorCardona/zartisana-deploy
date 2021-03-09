@@ -1,0 +1,12 @@
+{
+  "name": "zartisana-deploy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "test": "gulp clean"
+  }
+}
