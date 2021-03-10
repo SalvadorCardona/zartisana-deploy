@@ -1,17 +1,18 @@
 include .env
+FOLDER_NAME=lacliqueandcollecte-master
 
 install:
-	yarn install
 	cp .env.preprod .env
 
 build:
-	rm -Rf master master.zip lacliqueandcollecte-master
+	rm -Rf master master.zip ${FOLDER_NAME}
 	wget https://github.com/SalvadorCardona/lacliqueandcollecte/archive/master.zip
 	unzip master.zip
-	cd lacliqueandcollecte-master && make install-php
-	cd lacliqueandcollecte-master && make install-asset
-	zip -r master.zip lacliqueandcollecte-master
-	sshpass -p ${FTP_PASSWORD} scp master.zip ${FTP_USER}@${FTP_HOST}:./landl/test
-	sshpass -p ${FTP_PASSWORD} ssh ${FTP_USER}@${FTP_HOST} unzip ./landl/test/master.zip
-	rm -Rf master master.zip lacliqueandcollecte-master
+	cd ${FOLDER_NAME} && make install-php
+	cd ${FOLDER_NAME} && make install-asset
+	rm -R ${FOLDER_NAME}/assets
+	cd ${FOLDER_NAME} && zip -r master.zip ./ && mv master.zip ./..
+	sshpass -p ${FTP_PASSWORD} scp master.zip ${FTP_USER}@${FTP_HOST}:./${FTP_PATH_FOLDER}
+	sshpass -p ${FTP_PASSWORD} ssh ${FTP_USER}@${FTP_HOST} unzip -o ./${FTP_PATH_FOLDER}/master.zip -d landl/test
+	rm -Rf master master.zip ${FOLDER_NAME}
 
