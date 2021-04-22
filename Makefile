@@ -12,7 +12,7 @@ build-on-integration:
 	unzip master.zip
 	cd ${BUILD_FOLDER} && make install-php
 	cd ${BUILD_FOLDER} && make install-asset
-	cp -r ${BUILD_FOLDER}/vendor ${BUILD_FOLDER}/web ${BUILD_FOLDER}/src ${BUILD_FOLDER}/theme ${BUILD_FOLDER}/config ${BUILD_FOLDER}/composer.json ${BUILT_FOLDER}
+	cp -r ${BUILD_FOLDER}/back/vendor ${BUILD_FOLDER}/back/web ${BUILD_FOLDER}/back/src ${BUILD_FOLDER}/back/theme ${BUILD_FOLDER}/back/config ${BUILD_FOLDER}/back/composer.json ${BUILT_FOLDER}
 	cd ${BUILT_FOLDER} && zip -r master.zip ./ && mv master.zip ./..
 	sshpass -p ${FTP_PASSWORD} scp master.zip ${FTP_USER}@${FTP_HOST}:./${FTP_PATH_FOLDER}
 	sshpass -p ${FTP_PASSWORD} ssh ${FTP_USER}@${FTP_HOST} unzip -o ./${FTP_PATH_FOLDER}/master.zip -d ${FTP_PATH_FOLDER}
